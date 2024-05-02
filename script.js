@@ -23,11 +23,32 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let choiceNumber = Number(prompt("Input a number between 0-2 included:"));
-
-  if (!(0 <= choiceNumber && choiceNumber <= 2)) {
-    return "You must input a number between 0-2 included.";
-  }
-
-  return getStringChoice(choiceNumber);
+  return prompt("Input your selection: ").trim().toLowerCase();
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("It's a tie");
+    return;
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    console.log("You win!");
+    humanScore++;
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    console.log("You win!");
+    humanScore++;
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    console.log("You win!");
+    humanScore++;
+  } else {
+    console.log(`You lose. `);
+    computerScore++;
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
