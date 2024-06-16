@@ -26,30 +26,30 @@ function getHumanChoice() {
   return prompt("Input your selection: ").trim().toLowerCase();
 }
 
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("It's a tie");
+    return;
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    console.log("You win the round!");
+    humanScore++;
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    console.log("You win the round!");
+    humanScore++;
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    console.log("You win the round!");
+    humanScore++;
+  } else {
+    console.log(`You lose the round.`);
+    computerScore++;
+  }
+}
+
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
 
   for (let i = 0; i < 5; i++) {
-    function playRound(humanChoice, computerChoice) {
-      if (humanChoice === computerChoice) {
-        console.log("It's a tie");
-        return;
-      } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win the round!");
-        humanScore++;
-      } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win the round!");
-        humanScore++;
-      } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win the round!");
-        humanScore++;
-      } else {
-        console.log(`You lose the round.`);
-        computerScore++;
-      }
-    }
-
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
@@ -60,7 +60,9 @@ function playGame() {
     console.log("You win the game! Congrats 🎉");
   } else {
     console.log("You lose (╯°□°)╯︵ ┻━┻");
-    console.log("Justing kidding ┳━┳ ヽ(ಠل͜ಠ)ﾉ");
+    setTimeout(() => {
+      console.log("Justing kidding ┳━┳ ヽ(ಠل͜ಠ)ﾉ");
+    }, 1000);
   }
 }
 
